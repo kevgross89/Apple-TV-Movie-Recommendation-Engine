@@ -128,12 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Data
-./Data/IMDB/title_data.tsv
-./Data/IMDB/title_principals_data.tsv
-./Data/IMDB/basic_name_data.tsv
-./Data/IMDB/ratings_data.tsv
-./Data/IMDB/title_basics_data.tsv
-./Data/IMDB/title_data.tsv
-./Data/IMDB/title_principals_data.tsv
-/Data/IMDB/**
+Data/IMDB/*.tsv
+Data/IMDB/**
