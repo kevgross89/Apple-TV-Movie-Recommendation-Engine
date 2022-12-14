@@ -130,3 +130,4 @@ dmypy.json
 
 Data/IMDB/*.tsv
 Data/IMDB/**
+Data/Wikipedia Movie Plots/**
