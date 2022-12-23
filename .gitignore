@@ -128,6 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+Data/The Movies Dataset/**
 Data/IMDB/*.tsv
 Data/IMDB/**
 Data/Wikipedia Movie Plots/**./.git/objects/43/56e64b2057e311030ea7bac8d204d46a8590ab
@@ -154,5 +155,21 @@ Data/Wikipedia Movie Plots/**./.git/objects/43/56e64b2057e311030ea7bac8d204d46a8
 ./Data/IMDB/title_data.tsv
 ./Data/IMDB/title_principals_data.tsv
 ./Data/The Movies Dataset/credits.csv
+./Data/The Movies Dataset/ratings.csv
+./Data/Wikipedia Movie Plots/wiki_movie_plots_deduped.csv
+./.git/objects/43/56e64b2057e311030ea7bac8d204d46a8590ab
+./.git/objects/6f/9369e3fab39ee041aa7cc7e4c64c42939583ad
+./.git/objects/77/fd140585fc13df7435820096551eb2ede720e2
+./.git/objects/b1/1131c84c2aebc57f4a9cb828f11d2c0194d44b
+./.git/objects/d0/21d887226a945d15242b29645805e63c183ae3
+./.git/objects/d0/7eaa731cfb69bd220a01699c120d1848232a0e
+./.git/objects/fd/67c9bc1014c7e86ad0ac4f753f2ffd53b1521e
+./Data/IMDB/basic_name_data.tsv
+./Data/IMDB/ratings_data.tsv
+./Data/IMDB/title_basics_data.tsv
+./Data/IMDB/title_data.tsv
+./Data/IMDB/title_principals_data.tsv
+./Data/The Movies Dataset/credits.csv
+./Data/The Movies Dataset/movies_metadata.csv
 ./Data/The Movies Dataset/ratings.csv
 ./Data/Wikipedia Movie Plots/wiki_movie_plots_deduped.csv
