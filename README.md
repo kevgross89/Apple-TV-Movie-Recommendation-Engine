@@ -4,11 +4,22 @@
 
 Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Additionally, they can use the movie recommendation engine to expertly suggest movies to watch for all of its customer's needs.
 
+The goal of this project is two fold:
+
+1. Determine what type of movies Apple TV+ should add to its library
+2. Create a movie recommendation engine for the platform
+
 ## Business Understanding
 
 According to [Business Insider](https://www.businessinsider.com/major-streaming-services-compared-cost-number-of-movies-and-shows-2022-4#prime-video-has-the-most-movies-of-any-service-but-hbo-max-has-the-most-high-quality-movies-2), as of April 11, 2022, Apple TV+ only had 44 total movies available, with only 14 of those movies considered to be "high quality" (rated 7.5+ on IMDb with 300+ votes). Compared to the rest of the streaming landscape, they not only have significantly less movies than its competitors, but also less "high quality" movies.
 
 ![Image](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/Streaming%20Service%20Movie%20Share.png)
+
+[KPMG](https://advisory.kpmg.us/articles/2019/consumers-video-streaming.html) conducted a survey to better understand how consumers chose video streaming services and found that:
+
+> "Consumers want access to a broad content mix, including original series, and a **substantial library of movies** and popular TV series"
+
+With these findings, it is reasonable to think that adding additional movies to Apple TV+'s library will attract additional subscribers. 
 
 ## Data
 
