@@ -1,8 +1,8 @@
-# Hulu Movie Recommendation Engine
+# Apple TV+ Movie Recommendation Engine
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. With the addition of these new movies, Apple TV+ is looking to create multiple movie recommendation engines that can expertly suggest movies to watch for all of its customer's needs.
+Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Additionally, they can use the movie recommendation engine to expertly suggest movies to watch for all of its customer's needs.
 
 ## Business Understanding
 
