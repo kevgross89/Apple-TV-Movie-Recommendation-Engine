@@ -4,12 +4,7 @@
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Additionally, they can use the movie recommendation engine to expertly suggest movies to watch for all of its customer's needs.
-
-The goal of this project is two fold:
-
-1. Determine what type of movies Apple TV+ should add to its library
-2. Create a movie recommendation engine for the platform
+Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model has a RMSE of 0.83, meaning that it is able to predict the rating (out of 5) within 0.83 points of a given movie and user. 
 
 ## Business Understanding
 
