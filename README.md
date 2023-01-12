@@ -65,7 +65,7 @@ The first recommendation system is content-based, meaning it generates recommend
 |      6608 |         Mr. B Natural |
 |     22145 | It's a Boy Girl Thing |
 
-This makes a lot of sense because *Toy Story 2* and *Toy Story 3* are extremely likely to have similar plot descriptions to the original movie. 
+This makes a lot of sense because *Toy Story 2* and *Toy Story 3* are extremely likely to have similar plot descriptions and matches on character's names with the original movie. *Destination Meatball* sneaks into the #2 slot because the main characters are Woody Woodpecker and Buzz Buzzard, which are also the same first names as the two main characters in *Toy Story* (Woody and Buzz Lightyear).
 
 #### Metadata-Based Model
 
