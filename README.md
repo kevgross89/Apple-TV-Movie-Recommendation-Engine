@@ -4,7 +4,7 @@
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model has a RMSE of 0.83, meaning that it is able to predict the rating (out of 5) within 0.83 points of a given movie and user. 
+Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.75, meaning that it is able to predict the rating (out of 5) within 0.75 points of a given movie and user. 
 
 ## Business Understanding
 
@@ -35,6 +35,12 @@ This project used 3 datasets, some of which have multiple files within them:
   * `ratings`
 
 ## Modeling
+
+This project creates multiple personalized recommendation systems:
+
+* **Content-based filtering**, which generates predictions by analyzing item attributes and searching for similarities between them
+* **Collaborative filtering**, which generates predictions by analyzing user behavior and matching users with similar tastes
+* **Hybrid filtering**, which combines two or more models.
 
 ## Recommendations
 
