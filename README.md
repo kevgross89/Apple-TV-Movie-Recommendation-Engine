@@ -1,10 +1,10 @@
 # Apple TV+ Movie Recommendation Engine
 
-![Header](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/1c81beceadedd19f042225269431cd84.png)
+
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.75, meaning that it is able to predict the rating (out of 5) within 0.75 points of a given movie and user. 
+Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
 
 ## Business Understanding
 
@@ -237,7 +237,13 @@ First, we are going to rotate through the below algorthims to see which one has 
 
 Now we know that our hybrid data (movies that have a score greater than 7.75) gives us the lowest RMSE with `KNNBaseline`, we can move on to actual findings with this information.
 
+## Results
+
+Utilizing the `KNNBaseline` hybrid model, we are able to generate predictions that have a RMSE of 0.739 (out of 5). By running this model through our dataset, we are able to generate predictions for each user and every movie in our dataset. When we look at the average estimated rating by title, we can determine what movies our users are most likely to resonate with based on their previous choices. 
+
 ## Recommendations
+
+With the `KNNBaseline` model, we can predict that specific movies will be of interest to customers who are already on the platform. We would like to recommend that the movies listed below be added to Apple TV+. These well known releases should lead to more people subscribing when they want to watch one of these films. 
 
 | **Index** |                   **Title**                   |
 |----------:|:---------------------------------------------:|
@@ -267,6 +273,14 @@ Now we know that our hybrid data (movies that have a score greater than 7.75) gi
 |      4502 |               American History X              |
 |      4631 |                  Donnie Darko                 |
 
+Additionally, after acquiring these movies, Apple TV+ should utilize the movie recommendation engines that were listed above on their platform. Some recommendation lines can be specifically tailored towards a user's preferences (because you watched this, you might like this), and other recommendation lines can be based on overall statistics (trending right now or highest rated movies).
+
 ## Next Steps
+
+After acquiring these films, Apple TV+ should continue to gather information from their subscribers to see what content they interact with and what content they consume. From there, Apple TV+ can recommend content that is specifically tailored towards a user's interest.
+
+Additionally, Apple TV+ can look at demographics for users and see where they are ahead of the curve and where they are lacking behind other OTT platforms. For example, if males ages 13-24 make up 14% of Netflix's audience and that same demo is only 5% on Apple TV+, Apple TV+ should look to figure out what content males ages 13-24 are interested in so Apple TV+ can look to add it into their library. 
+
+![Footer](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/1c81beceadedd19f042225269431cd84.png)
 
 ## Credits and Relevant Resources
