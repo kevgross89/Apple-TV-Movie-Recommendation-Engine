@@ -6,6 +6,15 @@
 
 Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
 
+## Navigation
+
+This repository consists of multiple files and folders:
+
+* [Data](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Data)
+* [Images](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Images)
+* [Python Notebook](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Apple%20TV%2B%20Movie%20Recommendation%20Engine.ipynb)
+* [PowerPoint Presentation]()
+
 ## Business Understanding
 
 According to [Business Insider](https://www.businessinsider.com/major-streaming-services-compared-cost-number-of-movies-and-shows-2022-4#prime-video-has-the-most-movies-of-any-service-but-hbo-max-has-the-most-high-quality-movies-2), as of April 11, 2022, Apple TV+ only had 44 total movies available, with only 14 of those movies considered to be "high quality" (rated 7.5+ on IMDb with 300+ votes). Compared to the rest of the streaming landscape, they not only have significantly less movies than its competitors, but also less "high quality" movies.
