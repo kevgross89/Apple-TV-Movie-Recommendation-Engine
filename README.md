@@ -284,3 +284,17 @@ Additionally, Apple TV+ can look at demographics for users and see where they ar
 ![Footer](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/1c81beceadedd19f042225269431cd84.png)
 
 ## Credits and Relevant Resources
+
+[Susan Li: Towards Data Science post on building and testing recommender systems](https://towardsdatascience.com/building-and-testing-recommender-systems-with-surprise-step-by-step-d4ba702ef80b)
+
+[Rounak Banik: Hands-On Recommendation Systems with Python](https://learning.oreilly.com/library/view/hands-on-recommendation-systems/9781788993753/94dd3f9a-7847-47a2-9f98-b0b8f094688a.xhtml)
+
+[Diven Sambhwani: Towards Data Science post on movie recommender systems](https://towardsdatascience.com/movie-recommender-system-part-1-7f126d2f90e2)
+
+[Jonah Flateman: Medium post on using surprise in Python with a recommender system](https://medium.com/@jonahflateman/using-surprise-in-python-with-a-recommender-system-2d6030140926)
+
+[Mihir Thakkar: Github repo on machine learning](https://github.com/kevgross89/Introduction-to-Machine-Learning/blob/master/Collaborative%20Filtering/Movie%20Lens%20Collaborative%20Filtering.ipynb)
+
+[Armand Olivares: Medium post on building NLP content-based recommender systems](https://medium.com/@armandj.olivares/building-nlp-content-based-recommender-systems-b104a709c042)
+
+[Amol Mavuduru: Medium post on building simple recommender systems with Surprise](https://towardsdatascience.com/how-you-can-build-simple-recommender-systems-with-surprise-b0d32a8e4802)
