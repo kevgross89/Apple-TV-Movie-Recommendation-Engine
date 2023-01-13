@@ -114,7 +114,171 @@ Now we are going to create our third type of model. One of the most basic ideas 
 
 Let's take a look at the top rated movies in our dataset:
 
+![rated](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/IMDB%2015%20Highest%20Rated.png)
+
+And now let's look at the movies that recieved the most votes:
+
+![votes](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/IMDB%2015%20Highest%20Voted.png)
+
+Simply taking movies off of these lists are another type of recommendation engine that Apple TV+ can offer.
+
+#### Weighted Rating Model
+
+There is a slight relationship between the average IMDB rating and the number of IMDB votes, as we can see below: 
+
+![ratepop](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Rating%20and%20Popularity.png)
+
+Due to somewhat positive relationship, we are going to come up with a weighted rating that looks at both metrics. This can be represented by the below equation:
+
+\begin{equation} \text Weighted Rating (\bf WR) = \left({{\bf v} \over {\bf v} + {\bf m}} \cdot R\right) + \left({{\bf m} \over {\bf v} + {\bf m}} \cdot C\right) \end{equation}
+
+In this equation,
+
+* v is the number of votes for the movie (`numVotes`)
+* m is the minumum votes required to be listed in the chart
+* R is the average rating for the movie (`averageRating`)
+* C is the mean vote across the whole dataset
+
+We already have the values for `v` and `R`. Additionally, we are able to directly calculate `C` from this information. One part we will need to figure out is an appropriate value for `m`.
+
+The average rating for a movie in our IMDB dataset is around 6.2 on a scale of 10. If we set `m` = 0, meaning that a movie need 0 votes to be included in our analysis, we get the below output:
+
+|       |                **Title** | **averageRating** | **numVotes** | **Score** |
+|------:|-------------------------:|------------------:|-------------:|----------:|
+| 22505 |               Swayamvara |               9.4 |           16 |       9.4 |
+| 11036 | The Shawshank Redemption |               9.3 |      2663062 |       9.3 |
+| 21844 |               Kaya Taran |               9.2 |            7 |       9.2 |
+| 20410 |              Hamara Ghar |               9.2 |            6 |       9.2 |
+|  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
+
+As we can see above, we have a lot of movies here that have basically no votes. Let's try running this again but include movies that are in the top 75% of votes received. 
+
+|       |                **Title** | **averageRating** | **numVotes** | **Score** |
+|------:|-------------------------:|------------------:|-------------:|----------:|
+| 11036 | The Shawshank Redemption |               9.3 |      2663062 |       9.3 |
+|  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
+| 24805 |                Mayabazar |               9.1 |         5149 |       9.1 |
+| 22502 |       Bangarada Manushya |               9.0 |          947 |       9.0 |
+| 17849 |          The Dark Knight |               9.0 |      2636054 |       9.0 |
+
+This looks significantly better. Now we have the ability to generate recommendations based on the average rating and number of votes, while taking into account a minumum number of votes needed to recommend. 
+
+### Collaborative Filtering Recommendation Models
+
+We are now going to move onto a new type of recommendation system using collaborative filtering. All of the previous recommender systems were content based, meaning they would recommend items based on analyizing item attributes and finding similar items. Pivoting to collaborative filtering, we will now create a recommendation system based on a user's previous behaviors. The goal of collaborative filtering systems is to provide the best user experience. Big companies such as Netflix and Amazon use these everyday and are a staple of their business model.
+
+Our dataframe contains user ratings that range from 0.5 to 5.0. Therefore, we can model this problem as an instance of supervised learning where we need to predict the rating, given a user and a movie. Although the ratings can only take in ten discrete values, we will model this as a regression problem.
+
+We are going to split the `collab_df` so that 75% of a user's ratings are in the training dataset and 25% are in the testing dataset, which will require us do the `train_test_split` in a bit of an odd way. We will assume that the `userId` field is the target variable (or y) and that the other columns are the predictor variables (or X). We will perform a `train_test_split` and set stratify to `y` to ensure that the proportion of each class is the same in the training and testing datasets.
+
+Additionally, are going to use **root mean squared error** to assess our model performance as it is the most commonly used performance metric for regressors. 
+
+#### Baseline Model
+
+To start, we are going to make a baseline collaborative filter model. This model takes in a `userId` and `imdbId` as input and returns a float between 0.5 and 5.0. We make our baseline model will return a 3.0 regardless of `userId` and `imdbId`. The RMSE returned for this model is 1.141.
+
+#### User-Based Mean Model
+
+This type of filter finds users that are similar to a particular user and then recommends products that those users have liked. We will start by building a simple collaborative filter. This will take in a `userId` and `imdbId` and output the mean rating for the movie by everyone who has rated it. This filter will not distinguish between users meaning each user is assigned equal weight. 
+
+It is also possible that some movies will only be in the test set and not the training set, therefore we will give a default rating of 3.0 like our baseline model. After running our mdoel, we return a RMSE of 0.963.
+
+#### Item-Based Models
+
+These models are the same as the last type, except users now play the role that the items played. According to [Towards Data Science](https://towardsdatascience.com/comprehensive-guide-on-item-based-recommendation-systems-d67e40e2b75d) it was developed by Amazon in 1998 and plays a great role in Amazon's success.
+
+At the core, item-based collaborative filters are all about finding items similar to the ones that a user has already liked. For example, let's assume that Maddie enjoyed movies 'A', 'B', and 'C'. We will then search for movies that are similar to those three movies. If we found a movie 'D', that is highly similar to one, two, or three of 'A', 'B', or 'C', we would recommend movie 'D' to Maddie because it is very similar to movies she already watched.
+
+![item_model]()
+
+##### Cluster Models
+
+Using clustering, it is possible to group users into a cluster and only take the users from the same clusters into consideration when predicting ratings. We will first find the k-nearest neighbors of users who have rated the movie, and then output the average rating of the nearest users for the movie. The `KNNBasic` model has a RMSE of 0.894, the `KNNBaseline` model has a RMSE of 0.830, and the `KNNWithMeans` has a RMSE of 0.852.
+
+##### Singular-Value Decomposition Models
+
+Principal Component Analysis (or PCA) transforms a *m x n* matrix into n, m-dimensional vectors (or principal components) in such a way that each component is orthogonal to the next component. It also constructs these components in such a way that the first component holds the most variance (or information), followed by the second component, and so on.
+
+The classic version of Singular-Value Decomposition (SVD), like most other machine learning algorithms, does not work with sparse matrices. However, Simon Funk figured out a workaround for this problem, and his solution led to one of the most famous solutions in the world of recommender systems.
+
+Funk's system took in the sparse ratings matrix, A, and constructed two dense user- and item-embedding matrices, U and V respectively. These dense matrices directly gave us the predictions for all the missing values in the original matrix, A.
+
+Our `SVD` model has a RMSE of 0.828 and our `SVD` with `GridSearchCV` has a RMSE of 0.824
+
+### Hybrid Models
+
+Hybrid recommenders are powerful, robust systems that combine various simpler models to give predictions. There is no correct way for a hybrid model to function - some use content and collaborative filtering techniques separately while others use content based techniques in collaborative filters.
+
+Netflix is great example of a hybrid recommender. They have one line that typical includes a section *Because you watched This*, which is a content-based technique to show movies similar to movies you have viewed in the past. And then there can be another section such as *Top Picks*, which is a collaborative filtering technique to identify users who have liked movies that are similar to movies I have watched.
+
+![netflix](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/T34z9GTZKh6o7JGrp9CM9k.png)
+
+#### Hybrid Model #1
+
+We are going to create a hybrid recommendation function that uses content and collaborative filtering techniques. First, we will pair down our dataframe to include movies that have achieved a certain score and a specific number of votes (content based filter). From there we will load our new dataframe into `Surprise` and run a SVD package (collaborative filter). After performing these two operations, we return a RMSE of 0.741, which is our lowest RMSE.
+
+|         **Type of Model**        | **RMSE** |
+|:--------------------------------:|:--------:|
+|    Baseline Model (User Based)   |   1.141  |
+|      Mean Model (User Based)     |   0.963  |
+|      KNN Basic (Item Based)      |   0.893  |
+|     KNN Baseline (Item Based)    |   0.830  |
+|    KNN With Means (Item Based)   |   0.852  |
+|         SVD (Item Based)         |   0.828  |
+| SVD With GridSearch (Item Based) |   0.824  |
+|           Hybrid Model           |   0.741  |
+
+#### Hybrid Model #2
+
+Now that we know that using the top performing movies with more than 50k votes reduces our RMSE, we are going to use this data to hypertune a `Surprise` algorithm.
+
+First, we are going to rotate through the below algorthims to see which one has the lowest RMSE:
+
+|   **Algorithm** | **test_rmse** | **fit_time** | **test_time** |
+|----------------:|--------------:|-------------:|--------------:|
+|     KNNBaseline |      0.738610 |     0.050790 |      0.621395 |
+|    KNNWithMeans |      0.747910 |     0.048250 |      0.487763 |
+|   KNNWithZScore |      0.752364 |     0.059215 |      0.526507 |
+|             SVD |      0.755539 |     0.401586 |      0.049812 |
+|           SVDpp |      0.756807 |     3.569030 |      0.149865 |
+|        KNNBasic |      0.775442 |     0.041540 |      0.451509 |
+|        SlopeOne |      0.792698 |     0.014635 |      0.087261 |
+|    BaselineOnly |      0.795183 |     0.006902 |      0.014330 |
+|             NMF |      0.798329 |     0.493980 |      0.026299 |
+|    CoClustering |      0.835452 |     0.159107 |      0.017365 |
+| NormalPredictor |      1.183182 |     0.009999 |      0.018840 |
+
+Now we know that our hybrid data (movies that have a score greater than 7.75) gives us the lowest RMSE with `KNNBaseline`, we can move on to actual findings with this information.
+
 ## Recommendations
+
+| **Index** |                   **Title**                   |
+|----------:|:---------------------------------------------:|
+|         0 |            The Shawshank Redemption           |
+|       317 |                 Reservoir Dogs                |
+|       448 |                   Fight Club                  |
+|       666 |               The Usual Suspects              |
+|       870 |                  The Departed                 |
+|       977 |                   The Matrix                  |
+|      1533 |                    Memento                    |
+|      1692 |                Schindler's List               |
+|      1912 |                     Snatch                    |
+|      2005 |              Requiem for a Dream              |
+|      2101 |            The Silence of the Lambs           |
+|      2380 |                  Forrest Gump                 |
+|      2709 | The Lord of the Rings: The Return of the King |
+|      2894 |     Eternal Sunshine of the Spotless Mind     |
+|      3025 |                 Spirited Away                 |
+|      3112 |              Saving Private Ryan              |
+|      3300 |                American Beauty                |
+|      3504 |                  Pulp Fiction                 |
+|      3811 |                     Fargo                     |
+|      4173 |                The Dark Knight                |
+|      4322 |              There Will Be Blood              |
+|      4350 |            How to Train Your Dragon           |
+|      4456 |                  The Pianist                  |
+|      4502 |               American History X              |
+|      4631 |                  Donnie Darko                 |
 
 ## Next Steps
 
