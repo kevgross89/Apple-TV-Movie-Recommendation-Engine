@@ -128,20 +128,9 @@ There is a slight relationship between the average IMDB rating and the number of
 
 ![ratepop](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Rating%20and%20Popularity.png)
 
-Due to somewhat positive relationship, we are going to come up with a weighted rating that looks at both metrics. This can be represented by the below equation:
+Due to somewhat positive relationship, we are going to come up with a weighted rating that looks at both metrics. 
 
-\begin{equation} \text Weighted Rating (\bf WR) = \left({{\bf v} \over {\bf v} + {\bf m}} \cdot R\right) + \left({{\bf m} \over {\bf v} + {\bf m}} \cdot C\right) \end{equation}
-
-In this equation,
-
-* v is the number of votes for the movie (`numVotes`)
-* m is the minumum votes required to be listed in the chart
-* R is the average rating for the movie (`averageRating`)
-* C is the mean vote across the whole dataset
-
-We already have the values for `v` and `R`. Additionally, we are able to directly calculate `C` from this information. One part we will need to figure out is an appropriate value for `m`.
-
-The average rating for a movie in our IMDB dataset is around 6.2 on a scale of 10. If we set `m` = 0, meaning that a movie need 0 votes to be included in our analysis, we get the below output:
+The average rating for a movie in our IMDB dataset is around 6.2 on a scale of 10. If we set don't filter out any movies using the number of votes category, we get the below output:
 
 |       |                **Title** | **averageRating** | **numVotes** | **Score** |
 |------:|-------------------------:|------------------:|-------------:|----------:|
@@ -151,15 +140,15 @@ The average rating for a movie in our IMDB dataset is around 6.2 on a scale of 1
 | 20410 |              Hamara Ghar |               9.2 |            6 |       9.2 |
 |  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
 
-As we can see above, we have a lot of movies here that have basically no votes. Let's try running this again but include movies that are in the top 75% of votes received. 
+As we can see above, we have a lot of movies here that have basically no votes. Let's try running this again but include movies that are in the top 10% of votes received. 
 
 |       |                **Title** | **averageRating** | **numVotes** | **Score** |
 |------:|-------------------------:|------------------:|-------------:|----------:|
 | 11036 | The Shawshank Redemption |               9.3 |      2663062 |       9.3 |
 |  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
-| 24805 |                Mayabazar |               9.1 |         5149 |       9.1 |
-| 22502 |       Bangarada Manushya |               9.0 |          947 |       9.0 |
 | 17849 |          The Dark Knight |               9.0 |      2636054 |       9.0 |
+|  6130 |             12 Angry Men |               9.0 |       786416 |       9.0 |
+|  8257 |    The Godfather Part II |               9.0 |      1264131 |       9.0 |
 
 This looks significantly better. Now we have the ability to generate recommendations based on the average rating and number of votes, while taking into account a minumum number of votes needed to recommend. 
 
@@ -169,19 +158,17 @@ We are now going to move onto a new type of recommendation system using collabor
 
 Our dataframe contains user ratings that range from 0.5 to 5.0. Therefore, we can model this problem as an instance of supervised learning where we need to predict the rating, given a user and a movie. Although the ratings can only take in ten discrete values, we will model this as a regression problem.
 
-We are going to split the `collab_df` so that 75% of a user's ratings are in the training dataset and 25% are in the testing dataset, which will require us do the `train_test_split` in a bit of an odd way. We will assume that the `userId` field is the target variable (or y) and that the other columns are the predictor variables (or X). We will perform a `train_test_split` and set stratify to `y` to ensure that the proportion of each class is the same in the training and testing datasets.
-
-Additionally, are going to use **root mean squared error** to assess our model performance as it is the most commonly used performance metric for regressors. 
+We are going to split the dataframe so that 75% of a user's ratings are in the training dataset and 25% are in the testing dataset, which will require us do the `train_test_split` in a bit of an odd way. We will assume that the `userId` field is the target variable (or y) and that the other columns are the predictor variables (or X). Additionally, are going to use **root mean squared error** to assess our model performance as it is the most commonly used performance metric for regressors. 
 
 #### Baseline Model
 
-To start, we are going to make a baseline collaborative filter model. This model takes in a `userId` and `imdbId` as input and returns a float between 0.5 and 5.0. We make our baseline model will return a 3.0 regardless of `userId` and `imdbId`. The RMSE returned for this model is 1.141.
+To start, we are going to make a baseline collaborative filter model. This model takes in a `userId` and `imdbId` as input and returns a float between 0.5 and 5.0. We make our baseline model will return a 3.0 regardless of `userId` and `imdbId`. **The RMSE returned for this model is 1.141.**
 
 #### User-Based Mean Model
 
 This type of filter finds users that are similar to a particular user and then recommends products that those users have liked. We will start by building a simple collaborative filter. This will take in a `userId` and `imdbId` and output the mean rating for the movie by everyone who has rated it. This filter will not distinguish between users meaning each user is assigned equal weight. 
 
-It is also possible that some movies will only be in the test set and not the training set, therefore we will give a default rating of 3.0 like our baseline model. After running our mdoel, we return a RMSE of 0.963.
+It is also possible that some movies will only be in the test set and not the training set, therefore we will give a default rating of 3.0 like our baseline model. **After running our mdoel, we return a RMSE of 0.963.**
 
 #### Item-Based Models
 
@@ -193,7 +180,7 @@ At the core, item-based collaborative filters are all about finding items simila
 
 ##### Cluster Models
 
-Using clustering, it is possible to group users into a cluster and only take the users from the same clusters into consideration when predicting ratings. We will first find the k-nearest neighbors of users who have rated the movie, and then output the average rating of the nearest users for the movie. The `KNNBasic` model has a RMSE of 0.894, the `KNNBaseline` model has a RMSE of 0.830, and the `KNNWithMeans` has a RMSE of 0.852.
+Using clustering, it is possible to group users into a cluster and only take the users from the same clusters into consideration when predicting ratings. We will first find the k-nearest neighbors of users who have rated the movie, and then output the average rating of the nearest users for the movie. **The `KNNBasic` model has a RMSE of 0.894, the `KNNBaseline` model has a RMSE of 0.830, and the `KNNWithMeans` has a RMSE of 0.852.**
 
 ##### Singular-Value Decomposition Models
 
@@ -203,7 +190,7 @@ The classic version of Singular-Value Decomposition (SVD), like most other machi
 
 Funk's system took in the sparse ratings matrix, A, and constructed two dense user- and item-embedding matrices, U and V respectively. These dense matrices directly gave us the predictions for all the missing values in the original matrix, A.
 
-Our `SVD` model has a RMSE of 0.828 and our `SVD` with `GridSearchCV` has a RMSE of 0.824
+**Our `SVD` model has a RMSE of 0.828 and our `SVD` with `GridSearchCV` has a RMSE of 0.824.**
 
 ### Hybrid Models
 
@@ -215,7 +202,7 @@ Netflix is great example of a hybrid recommender. They have one line that typica
 
 #### Hybrid Model #1
 
-We are going to create a hybrid recommendation function that uses content and collaborative filtering techniques. First, we will pair down our dataframe to include movies that have achieved a certain score and a specific number of votes (content based filter). From there we will load our new dataframe into `Surprise` and run a SVD package (collaborative filter). After performing these two operations, we return a RMSE of 0.741, which is our lowest RMSE.
+We are going to create a hybrid recommendation function that uses content and collaborative filtering techniques. First, we will pair down our dataframe to include movies that have achieved a certain score and a specific number of votes (content based filter). From there we will load our new dataframe into `Surprise` and run a SVD package (collaborative filter). **After performing these two operations, we return a RMSE of 0.741, which is our lowest RMSE.**
 
 |         **Type of Model**        | **RMSE** |
 |:--------------------------------:|:--------:|
