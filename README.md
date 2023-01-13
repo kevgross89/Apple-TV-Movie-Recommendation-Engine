@@ -1,6 +1,6 @@
 # Apple TV+ Movie Recommendation Engine
 
-
+![header](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Apple%20Logo%20Header.png)
 
 ## Motivation
 
