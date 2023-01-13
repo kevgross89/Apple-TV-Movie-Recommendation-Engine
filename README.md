@@ -189,7 +189,7 @@ These models are the same as the last type, except users now play the role that 
 
 At the core, item-based collaborative filters are all about finding items similar to the ones that a user has already liked. For example, let's assume that Maddie enjoyed movies 'A', 'B', and 'C'. We will then search for movies that are similar to those three movies. If we found a movie 'D', that is highly similar to one, two, or three of 'A', 'B', or 'C', we would recommend movie 'D' to Maddie because it is very similar to movies she already watched.
 
-![item_model]()
+![item_model](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/1_9IYmsEsJJz-j4taOySkBYQ.png)
 
 ##### Cluster Models
 
