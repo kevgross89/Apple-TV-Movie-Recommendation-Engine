@@ -4,7 +4,7 @@
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming marketplace. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
+Apple TV+ is looking to increase their market share in the streaming industry. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
 
 ## Navigation
 
