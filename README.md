@@ -13,7 +13,7 @@ Apple TV+ is looking to increase their market share in the streaming industry. O
 * [Data](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Data)
 * [Images](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Images)
 
-This project was created in a Python 3 Jupyter Notebook. To re-create this project, download the three data files from the `Data` links below. Additionally, since this project uses various `Surprise` packages, please make sure that it is installed on your computer (`pip install scikit-surprise`).
+This project was created in a Python 3 Jupyter Notebook. To re-create this project, download the three data files from the `Data` links below. Additionally, since this project uses various `Surprise` packages, please make sure that it is installed on your computer (`pip install scikit-surprise`). All of the packages used can also be found [HERE](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Import_Requirements.txt).
 
 ## Business Understanding
 
