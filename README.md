@@ -108,7 +108,6 @@ This recommendation function will follow the basic same process as before, howev
 |     10280 | DuckTales the Movie: Treasure of the Lost Lamp |
 |     10708 |                       Tom and Jerry: The Movie |
 |     11568 |                                       Hercules |
-|     11569 |                                       Hercules |
 |     15110 |                                  The Wild Life |
 
 *Toy Story 2* is obviously very close to *Toy Story*, but we can see that we do have a lot of differences from there. The second model has more children movies due to the genre, while the first model has more plot based movies.
@@ -148,7 +147,18 @@ The average rating for a movie in our IMDB dataset is around 6.2 on a scale of 1
 | 20410 |              Hamara Ghar |               9.2 |            6 |       9.2 |
 |  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
 
-As we can see above, we have a lot of movies here that have basically no votes. Let's try running this again but include movies that are in the top 10% of votes received. 
+As we can see above, we have a lot of movies here that have basically no votes. Let's try this again but look at movies that have received at least 237 votes, meaning they are not in the bottom 25% of votes received. 
+
+|       |                **Title** | **averageRating** | **numVotes** | **Score** |
+|------:|-------------------------:|------------------:|-------------:|----------:|
+| 11036 | The Shawshank Redemption |               9.3 |      2663062 |       9.3 |
+|  8039 |            The Godfather |               9.2 |      1845515 |       9.2 |
+| 24805 |                Mayabazar |               9.1 |         5149 |       9.1 |
+| 10848 |         Schindler's List |               9.0 |      1348587 |       9.0 |
+| 24947 |         Aha Naa Pellanta |               9.0 |         3056 |       9.0 |
+
+
+Lastly, let's try this one more time but only include movies that are in the top 10% of votes received. 
 
 |       |                **Title** | **averageRating** | **numVotes** | **Score** |
 |------:|-------------------------:|------------------:|-------------:|----------:|
@@ -281,7 +291,7 @@ With the `KNNBaseline` model, we can predict that specific movies will be of int
 |      4502 |               American History X              |
 |      4631 |                  Donnie Darko                 |
 
-Additionally, after acquiring these movies, Apple TV+ should utilize the movie recommendation engines that were listed above on their platform. Some recommendation lines can be specifically tailored towards a user's preferences (because you watched this, you might like this), and other recommendation lines can be based on overall statistics (trending right now or highest rated movies).
+Additionally, after acquiring these movies, Apple TV+ should utilize the movie recommendation engines that were listed above on their platform. Some recommendation items can be specifically tailored towards a user's preferences (because you watched this, you might like this), and other recommendation items can be based on overall statistics (trending right now or highest rated movies).
 
 ## Next Steps
 
