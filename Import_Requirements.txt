@@ -1,0 +1,22 @@
+Imports
+
+!pip install scikit-surprise
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from collections import Counter
+import squarify
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
+from sklearn.metrics import mean_squared_error
+from surprise import Reader, Dataset, KNNBasic, KNNBaseline, SVD, KNNWithMeans, accuracy, NormalPredictor, KNNWithZScore
+from surprise import BaselineOnly, SVDpp, NMF, SlopeOne, CoClustering
+from surprise.model_selection import cross_validate, GridSearchCV
+from surprise.accuracy import rmse
+from surprise.model_selection import train_test_split as train_test_split_surprise
+import string
+import re
+%matplotlib inline
