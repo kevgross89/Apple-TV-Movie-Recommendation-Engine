@@ -4,15 +4,16 @@
 
 ## Motivation
 
-Apple TV+ is looking to increase their market share in the streaming industry. One way they think they can attract more subscribers is by increasing the amount of movies they offer on their platform. Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
+Apple TV+ is looking to increase their market share in the streaming industry. One way they think they can attract more subscribers is by increasing the number of movies they offer on their platform. Using data from Wikipedia, IMDb, and MovieLens, Apple TV+ would like to explore the use of recommendation engines when selecting movies to include on their platform with the end goal being to attract more subscribers. Using various Python packages, the final machine learning model (`KNNBaseline`) has a RMSE of 0.74, meaning that it is able to predict the rating (out of 5) within 0.74 points of a given movie and user. 
 
-## Navigation
+## Navigation and Reproducibility
 
 * [Python Notebook](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Apple%20TV%2B%20Movie%20Recommendation%20Engine.ipynb)
 * [PowerPoint Presentation]()
 * [Data](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Data)
 * [Images](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Images)
 
+This project was created in a Python 3 Jupyter Notebook. To re-create this project, download the three data files from the `Data` link above. Additionally, since this project uses various `Surprise` packages, please make sure that it is installed on your computer (`pip install scikit-surprise`).
 
 ## Business Understanding
 
@@ -92,7 +93,7 @@ As we can see here, our `Others` category above has many subcategories within it
 
 ![year](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Movie%20By%20Release%20Year.png)
 
-Additonally, we can tell that more movies have been released in recent years due to the skewed left nature of the above chart.
+Additionally, we can tell that more movies have been released in recent years due to the skewed left nature of the above chart.
 
 The metadata-based model uses a vectorizer to build document vectors. One thing we address is that actors could have the same first name, for example such as *Tom Hanks* and *Tom Cruise*. These are clearly 2 different people but as of now, our vectorizer would just look at the name *Tom* as a separate entity. Therefore, we are going to strip the spaces between the genres, cast, and director's names. Therefore, in our example we will now have *tomhanks* and *tomcruise* to differentiate between our two actors. After doing this, we have a `soup` function which has an output such as `elijahwood ianmckellen livtyler viggomortensen seanastin orlandobloom christopherlee cateblanchett action adventure drama peterjackson`.
 
@@ -103,7 +104,6 @@ This recommendation function will follow the basic same process as before, howev
 |     12055 |                                    Toy Story 2 |
 |     12860 |                              The Polar Express |
 |      8566 |        Raggedy Ann & Andy: A Musical Adventure |
-|      8567 |        Raggedy Ann & Andy: A Musical Adventure |
 |      9994 |        Pound Puppies and the Legend of Big Paw |
 |     10280 | DuckTales the Movie: Treasure of the Lost Lamp |
 |     10708 |                       Tom and Jerry: The Movie |
@@ -117,14 +117,14 @@ This recommendation function will follow the basic same process as before, howev
 
 Now we are going to create our third type of model. One of the most basic ideas for a model is just to rank movies off of their respective ratings. However, doing a model like this has a few caveats:
 
-* Ratings do not look at the the popularity of a movie. For example, a movie with a rating of 8.0 from 10 voters will be considered "better" than a movie with a rating of 7.9 from 10,000 voters.
+* Ratings do not look at the popularity of a movie. For example, a movie with a rating of 8.0 from 10 voters will be considered "better" than a movie with a rating of 7.9 from 10,000 voters.
 * This metric will also favor movies that a smaller number of voters with extremely high ratings.
 
-Let's take a look at the top rated movies in our dataset:
+Let's take a look at the top-rated movies in our dataset:
 
 ![rated](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/IMDB%2015%20Highest%20Rated.png)
 
-And now let's look at the movies that recieved the most votes:
+And now let's look at the movies that received the most votes:
 
 ![votes](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/IMDB%2015%20Highest%20Voted.png)
 
@@ -158,11 +158,11 @@ As we can see above, we have a lot of movies here that have basically no votes. 
 |  6130 |             12 Angry Men |               9.0 |       786416 |       9.0 |
 |  8257 |    The Godfather Part II |               9.0 |      1264131 |       9.0 |
 
-This looks significantly better. Now we have the ability to generate recommendations based on the average rating and number of votes, while taking into account a minumum number of votes needed to recommend. 
+This looks significantly better. Now we have the ability to generate recommendations based on the average rating and number of votes, while taking into account a minimum number of votes needed to recommend. 
 
 ### Collaborative Filtering Recommendation Models
 
-We are now going to move onto a new type of recommendation system using collaborative filtering. All of the previous recommender systems were content based, meaning they would recommend items based on analyizing item attributes and finding similar items. Pivoting to collaborative filtering, we will now create a recommendation system based on a user's previous behaviors. The goal of collaborative filtering systems is to provide the best user experience. Big companies such as Netflix and Amazon use these everyday and are a staple of their business model.
+We are now going to move onto a new type of recommendation system using collaborative filtering. All of the previous recommender systems were content based, meaning they would recommend items based on analyzing item attributes and finding similar items. Pivoting to collaborative filtering, we will now create a recommendation system based on a user's previous behaviors. The goal of collaborative filtering systems is to provide the best user experience. Big companies such as Netflix and Amazon use these every day and are a staple of their business model.
 
 Our dataframe contains user ratings that range from 0.5 to 5.0. Therefore, we can model this problem as an instance of supervised learning where we need to predict the rating, given a user and a movie. Although the ratings can only take in ten discrete values, we will model this as a regression problem.
 
@@ -176,7 +176,7 @@ To start, we are going to make a baseline collaborative filter model. This model
 
 This type of filter finds users that are similar to a particular user and then recommends products that those users have liked. We will start by building a simple collaborative filter. This will take in a `userId` and `imdbId` and output the mean rating for the movie by everyone who has rated it. This filter will not distinguish between users meaning each user is assigned equal weight. 
 
-It is also possible that some movies will only be in the test set and not the training set, therefore we will give a default rating of 3.0 like our baseline model. **After running our mdoel, we return a RMSE of 0.963.**
+It is also possible that some movies will only be in the test set and not the training set, therefore we will give a default rating of 3.0 like our baseline model. **After running our model, we return a RMSE of 0.963.**
 
 #### Item-Based Models
 
@@ -210,7 +210,7 @@ Netflix is great example of a hybrid recommender. They have one line that typica
 
 #### Hybrid Model #1
 
-We are going to create a hybrid recommendation function that uses content and collaborative filtering techniques. First, we will pair down our dataframe to include movies that have achieved a certain score and a specific number of votes (content based filter). From there we will load our new dataframe into `Surprise` and run a SVD package (collaborative filter). **After performing these two operations, we return a RMSE of 0.741, which is our lowest RMSE.**
+We are going to create a hybrid recommendation function that uses content and collaborative filtering techniques. First, we will pare down our dataframe to include movies that have achieved a certain score and a specific number of votes (content-based filter). From there we will load our new dataframe into `Surprise` and run a SVD package (collaborative filter). **After performing these two operations, we return a RMSE of 0.741, which is our lowest RMSE.**
 
 |         **Type of Model**        | **RMSE** |
 |:--------------------------------:|:--------:|
@@ -227,7 +227,7 @@ We are going to create a hybrid recommendation function that uses content and co
 
 Now that we know that using the top performing movies with more than 50k votes reduces our RMSE, we are going to use this data to hypertune a `Surprise` algorithm.
 
-First, we are going to rotate through the below algorthims to see which one has the lowest RMSE:
+First, we are going to rotate through the below algorithms to see which one has the lowest RMSE:
 
 |   **Algorithm** | **test_rmse** | **fit_time** | **test_time** |
 |----------------:|--------------:|-------------:|--------------:|
