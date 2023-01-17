@@ -21,7 +21,7 @@ According to [Business Insider](https://www.businessinsider.com/major-streaming-
 
 ![Image](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/Streaming%20Service%20Movie%20Share.png)
 
-[KPMG](https://advisory.kpmg.us/articles/2019/consumers-video-streaming.html) conducted a survey to better understand how consumers chose video streaming services and found that:
+[KPMG conducted a survey](https://advisory.kpmg.us/articles/2019/consumers-video-streaming.html) to better understand how consumers chose video streaming services and found that:
 
 > "Consumers want access to a broad content mix, including original series, and a **substantial library of movies** and popular TV series"
 
