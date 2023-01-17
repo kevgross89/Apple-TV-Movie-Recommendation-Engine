@@ -1,6 +1,6 @@
 # Apple TV+ Movie Recommendation Engine
 
-![header](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Apple%20Logo%20Header.png)
+![header](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/1c81beceadedd19f042225269431cd84.png)
 
 ## Motivation
 
@@ -289,7 +289,7 @@ After acquiring these films, Apple TV+ should continue to gather information fro
 
 Additionally, Apple TV+ can look at demographics for users and see where they are ahead of the curve and where they are lacking behind other OTT platforms. For example, if males ages 13-24 make up 14% of Netflix's audience and that same demo is only 5% on Apple TV+, Apple TV+ should look to figure out what content males ages 13-24 are interested in so Apple TV+ can look to add it into their library. 
 
-![Footer](https://github.com/kevgross89/OTT-Capstone-Project/blob/main/Images/1c81beceadedd19f042225269431cd84.png)
+![footer](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Apple%20Logo%20Header.png)
 
 ## Credits and Relevant Resources
 
