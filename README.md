@@ -8,8 +8,8 @@ Apple TV+ is looking to increase their market share in the streaming industry. O
 
 ## Navigation and Reproducibility
 
-* [Python Notebook](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Apple%20TV%2B%20Movie%20Recommendation%20Engine.ipynb)
-* [PowerPoint Presentation](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Presentation%20-%20AppleTV%2B.pdf)
+* [Notebook](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Apple%20TV%2B%20Movie%20Recommendation%20Engine.ipynb)
+* [Presentation](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Presentation%20-%20AppleTV%2B.pdf)
 * [Data](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Data)
 * [Images](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Images)
 
@@ -323,9 +323,17 @@ Additionally, Apple TV+ can look at demographics for users and see where they ar
 
 ```
 ├── Data
-│   ├── MovieLens/ml-latest-small
-│   ├── Wikipedia Movie Plots
-│   ├── IMDB
+│   │   MovieLens
+│   │  ├── links.csv
+│   │  ├── movies.csv
+│   │  ├── ratings.csv
+│   │   IMDB
+│   │  ├── basic_name_data.tsv
+│   │  ├── ratings_data.tsv
+│   │  ├── title_basics_data.tsv
+│   │  ├── title_principals_data.tsv
+│   │   Wikipedia Movie Plots
+│   │  ├── wiki_movie_plots_deduped
 ├── Images
 ├── Import_Requirements.txt
 ├── Notebook.ipynb
