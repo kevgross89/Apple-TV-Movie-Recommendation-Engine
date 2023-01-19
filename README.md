@@ -318,3 +318,18 @@ Additionally, Apple TV+ can look at demographics for users and see where they ar
 [Armand Olivares: Medium post on building NLP content-based recommender systems](https://medium.com/@armandj.olivares/building-nlp-content-based-recommender-systems-b104a709c042)
 
 [Amol Mavuduru: Medium post on building simple recommender systems with Surprise](https://towardsdatascience.com/how-you-can-build-simple-recommender-systems-with-surprise-b0d32a8e4802)
+
+## Repository Structure
+
+```
+├── Data
+│   ├── MovieLens/ml-latest-small
+│   ├── Wikipedia Movie Plots
+│   ├── IMDB
+├── Images
+├── Import_Requirements.txt
+├── Notebook.ipynb
+├── Presentation.pdf
+├── README.md
+└── .gitignore
+```
