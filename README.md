@@ -33,14 +33,14 @@ With these findings, it is reasonable to think that adding additional movies to 
 
 This project used 3 datasets, some of which have multiple files within them:
 
-1. [Wikipedia Movie Plots](https://www.kaggle.com/datasets/jrobischon/wikipedia-movie-plots)
+1. **[Wikipedia Movie Plots](https://www.kaggle.com/datasets/jrobischon/wikipedia-movie-plots): consists of plot descriptions for ~35k movies**
   * `wiki_movie_plots_deduped`
-2. [IMDB](https://www.kaggle.com/datasets/ashirwadsangwan/imdb-dataset)
+2. **[IMDB](https://www.kaggle.com/datasets/ashirwadsangwan/imdb-dataset): consists of ratings for 1.2M movies**
   * `ratings_data`
   * `basic_name_data`
   * `title_basics_data`
   * `title_principals_data`
-3. [MovieLens 100K](https://grouplens.org/datasets/movielens/latest/)
+3. **[MovieLens 100K](https://grouplens.org/datasets/movielens/latest/): consists of 100k ratings applied to 9k movies by 600 users**
   * `links`
   * `movies`
   * `ratings`
@@ -303,6 +303,12 @@ Additionally, Apple TV+ can look at demographics for users and see where they ar
 
 ![footer](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Images/Apple%20Logo%20Header.png)
 
+## Conclusions
+
+In summary, this project created multiple movie recommendations for Apple TV+. These recommendation engines should help Apple TV+ increase the amount of subscribers on the platform and also be able to specifically recommend movies to users that are casually browsing Apple TV+'s library. 
+
+At the end of the day, we found that the machine learning model of `KNNBaseline` was the top performing model with a RMSE of 0.74. This means that the model was able to accurately predict the rating (out of 5) within 0.74 points of a given movie and user.
+
 ## Credits and Relevant Resources
 
 [Susan Li: Towards Data Science post on building and testing recommender systems](https://towardsdatascience.com/building-and-testing-recommender-systems-with-surprise-step-by-step-d4ba702ef80b)
@@ -333,7 +339,7 @@ Additionally, Apple TV+ can look at demographics for users and see where they ar
 │   │  ├── title_basics_data.tsv
 │   │  ├── title_principals_data.tsv
 │   │   Wikipedia Movie Plots
-│   │  ├── wiki_movie_plots_deduped
+│   │  ├── wiki_movie_plots_deduped.csv
 ├── Images
 ├── Import_Requirements.txt
 ├── Notebook.ipynb
