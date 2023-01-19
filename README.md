@@ -8,8 +8,8 @@ Apple TV+ is looking to increase their market share in the streaming industry. O
 
 ## Navigation and Reproducibility
 
-* [Notebook](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Apple%20TV%2B%20Movie%20Recommendation%20Engine.ipynb)
-* [Presentation](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Presentation%20-%20AppleTV%2B.pdf)
+* [Notebook (.ipynb)](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Notebook.ipynb)
+* [Presentation (.pdf)](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/blob/main/Presentation.pdf)
 * [Data](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Data)
 * [Images](https://github.com/kevgross89/Apple-TV-Movie-Recommendation-Engine/tree/main/Images)
 
